@@ -1,0 +1,18 @@
+deploy:
+  remote: true
+  commands:
+    - name: build hello-world image
+      command: |
+        set -ex
+        git clone "https://github.com/okteto-community/hello-world-nochart" /tmp/hello-world-nochart
+        cd /tmp/hello-world-nochart
+        git checkout $HELLO_WORLD_BRANCH
+        okteto build hello-world
+        # TODO -> how to retrieve the tag reliably
+        echo "HELLO_WORLD_IMAGE_TAG=${OKTETO_BUILD_HELLO_WORLD_IMAGE_TAG}" >> $OKTETO_ENV
+    - name: deploy application
+      command: |
+        helm upgrade --install hello-world ./hello-world \
+          --set image.repository=okteto.dev/hello-world \
+          --set image.tag=$HELLO_WORLD_IMAGE_TAG  \
+          --values values-okteto.yaml
