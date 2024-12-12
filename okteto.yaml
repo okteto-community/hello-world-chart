@@ -5,7 +5,7 @@ deploy:
       command: |
         helm upgrade --install hello-world ./hello-world \
           --set image.repository=okteto.dev/hello-world \
-          --set image.tag=$HELLO_WORLD_IMAGE_TAG  \
+          --set image.tag=${HELLO_WORLD_IMAGE_TAG:-main}  \
           --values values-okteto.yaml
 
 # we add the repository as a dependency to have it build first
