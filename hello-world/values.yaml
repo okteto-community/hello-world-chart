@@ -6,17 +6,17 @@ replicaCount: 1
 
 helloworld:
   image:
-    repository: nginx
+    repository: bitnami/nginx
     pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
-    tag: ""
+    tag: latest
 
 holamundo:
   image:
-    repository: nginx
+    repository: bitnami/nginx
     pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
-    tag: ""
+    tag: latest
 
 imagePullSecrets: []
 nameOverride: ""
