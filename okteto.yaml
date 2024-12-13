@@ -9,5 +9,5 @@ deploy:
           --values values-okteto.yaml \
           --set helloworld.image.repository=${HELLO_WORLD_IMAGE_REPOSITORY} \
           --set helloworld.image.tag=${HELLO_WORLD_IMAGE_TAG}  \
-          --set holamundo.image.repository=${HOLA_MUNDO_IMAGE_REPOSITORY} \
-          --set holamundo.image.tag=${HOLA_MUNDO_IMAGE_TAG}
+          --set holamundo.image.repository=${HOLA_MUNDO_IMAGE_REPOSITORY:-bitnami/nginx} \
+          --set holamundo.image.tag=${HOLA_MUNDO_IMAGE_TAG:-latest}
