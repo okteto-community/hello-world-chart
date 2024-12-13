@@ -4,18 +4,9 @@ deploy:
     - name: deploy application
       command: |
         helm upgrade --install hello-world ./hello-world \
-          --set helloworld.image.repository=${HELLO_WORLD_IMAGE_REPOSITORY} \
-          --set helloworld.image.tag=${HELLO_WORLD_IMAGE_TAG}  \
-          --set holamundo.image.repository=${HOLA_MUNDO_IMAGE_REPOSITORY} \
-          --set holamundo.image.tag=${HOLA_MUNDO_IMAGE_TAG}  \
+          --set helloworld.image.repository=${HELLO_WORLD_IMAGE_REPOSITORY:-bitnami/nginx} \
+          --set helloworld.image.tag=${HELLO_WORLD_IMAGE_TAG:-latest}  \
+          --set holamundo.image.repository=${HOLA_MUNDO_IMAGE_REPOSITORY:-bitnami/nginx} \
+          --set holamundo.image.tag=${HOLA_MUNDO_IMAGE_TAG:-latest}  \
+          --reuse-values \
           --values values-okteto.yaml
-
-# we add the repository as a dependency to have it build first
-dependencies:
-  hello-world:
-    repository: https://github.com/okteto-community/hello-world-nochart
-    wait: true
-
-  hola-mundo:
-    repository: https://github.com/okteto-community/hola-mundo-nochart
-    wait: true
