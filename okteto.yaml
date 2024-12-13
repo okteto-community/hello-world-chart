@@ -1,21 +1,26 @@
-deploy:
-  remote: true
-  commands:
-    - name: deploy application
-      command: |
-        helm upgrade --install hello-world ./hello-world \
-          --set helloworld.image.repository=${HELLO_WORLD_IMAGE_REPOSITORY} \
-          --set helloworld.image.tag=${HELLO_WORLD_IMAGE_TAG}  \
-          --set holamundo.image.repository=${HOLA_MUNDO_IMAGE_REPOSITORY} \
-          --set holamundo.image.tag=${HOLA_MUNDO_IMAGE_TAG}  \
-          --values values-okteto.yaml
-
 # we add the repository as a dependency to have it build first
 dependencies:
   hello-world:
     repository: https://github.com/okteto-community/hello-world-nochart
+    branch: rb/cross-deploy
     wait: true
+    variables:
+      DEPLOY: false
 
   hola-mundo:
     repository: https://github.com/okteto-community/hola-mundo-nochart
+    branch: rb/cross-deploy
     wait: true
+    variables:
+      DEPLOY: false
+
+deploy:
+  - name: Deploy Application
+    command: |
+      helm upgrade --install hello-world ./hello-world \
+        --set helloworld.image.repository=${OKTETO_REGISTRY_URL}/${OKTETO_NAMESPACE}/hola-mundo-nochart-hola-mundo \
+        --set helloworld.image.tag=${HELLO_WORLD_IMAGE_TAG:-okteto}  \
+        --set holamundo.image.repository=${OKTETO_REGISTRY_URL}/${OKTETO_NAMESPACE}/hola-mundo-nochart-hola-mundo \
+        --set holamundo.image.tag=${HOLA_MUNDO_IMAGE_TAG:-okteto}  \
+        --values values-okteto.yaml
+
