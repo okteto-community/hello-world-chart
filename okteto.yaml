@@ -4,8 +4,8 @@ deploy:
     - name: deploy application
       command: |
         helm upgrade --install hello-world ./hello-world \
-          --values values-okteto.yaml
-          --reuse-values
+          --values values-okteto.yaml \
+          --reuse-values \
           --set helloworld.image.repository=${HELLO_WORLD_IMAGE_REPOSITORY:-bitnami/nginx} \
           --set helloworld.image.tag=${HELLO_WORLD_IMAGE_TAG:-latest}  \
           --set holamundo.image.repository=${HOLA_MUNDO_IMAGE_REPOSITORY:-bitnami/nginx} \
