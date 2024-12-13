@@ -15,3 +15,7 @@ dependencies:
   hello-world:
     repository: https://github.com/okteto-community/hello-world-nochart
     wait: true
+
+  hola-mundo:
+    repository: https://github.com/okteto-community/hola-mundo-nochart
+    wait: true
