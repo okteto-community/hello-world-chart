@@ -1,13 +1,13 @@
 # we add the repository as a dependency to have it build first
 dependencies:
-  hello-world:
+  hello-world-nochart:
     repository: https://github.com/okteto-community/hello-world-nochart
     branch: rb/cross-deploy
     wait: true
     variables:
       DEPLOY: false
 
-  hola-mundo:
+  hola-mundo-nochart:
     repository: https://github.com/okteto-community/hola-mundo-nochart
     branch: rb/cross-deploy
     wait: true
