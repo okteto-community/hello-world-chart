@@ -2,14 +2,14 @@
 dependencies:
   hello-world-nochart:
     repository: https://github.com/okteto-community/hello-world-nochart
-    branch: rb/cross-deploy
+    branch: main
     wait: true
     variables:
       DEPLOY: false
 
   hola-mundo-nochart:
     repository: https://github.com/okteto-community/hola-mundo-nochart
-    branch: rb/cross-deploy
+    branch: main
     wait: true
     variables:
       DEPLOY: false
