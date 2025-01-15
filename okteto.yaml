@@ -2,25 +2,26 @@
 dependencies:
   hello-world-nochart:
     repository: https://github.com/okteto-community/hello-world-nochart
-    branch: main
+    branch: $HELLO_WORLD_BRANCH
     wait: true
     variables:
-      DEPLOY: false
+      DEPLOY: "false"
 
   hola-mundo-nochart:
     repository: https://github.com/okteto-community/hola-mundo-nochart
-    branch: main
+    branch: $HOLA_MUNDO_BRANCH
     wait: true
     variables:
-      DEPLOY: false
+      DEPLOY: "false"
 
 deploy:
   - name: Deploy Application
     command: |
+      echo hola=$HOLA_MUNDO_BRANCH
+      echo hello=$HELLO_WORLD_BRANCH
       helm upgrade --install hello-world ./hello-world \
         --set helloworld.image.repository=${OKTETO_REGISTRY_URL}/${OKTETO_NAMESPACE}/hello-world-nochart-hello-world \
         --set helloworld.image.tag=${HELLO_WORLD_IMAGE_TAG:-okteto}  \
         --set holamundo.image.repository=${OKTETO_REGISTRY_URL}/${OKTETO_NAMESPACE}/hola-mundo-nochart-hola-mundo \
         --set holamundo.image.tag=${HOLA_MUNDO_IMAGE_TAG:-okteto}  \
         --values values-okteto.yaml
-
