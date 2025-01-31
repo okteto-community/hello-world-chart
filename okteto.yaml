@@ -2,17 +2,17 @@
 dependencies:
   hello-world-nochart:
     repository: https://github.com/okteto-community/hello-world-nochart
-    branch: main
+    branch: ${HELLO_WORLD_BRANCH:-main}
     wait: true
     variables:
-      DEPLOY: false
+      DEPLOY: "false"
 
   hola-mundo-nochart:
     repository: https://github.com/okteto-community/hola-mundo-nochart
-    branch: main
+    branch: ${HOLA_MUNDO_BRANCH:-main}
     wait: true
     variables:
-      DEPLOY: false
+      DEPLOY: "false"
 
 deploy:
   - name: Deploy Application
@@ -23,4 +23,3 @@ deploy:
         --set holamundo.image.repository=${OKTETO_REGISTRY_URL}/${OKTETO_NAMESPACE}/hola-mundo-nochart-hola-mundo \
         --set holamundo.image.tag=${HOLA_MUNDO_IMAGE_TAG:-okteto}  \
         --values values-okteto.yaml
-
