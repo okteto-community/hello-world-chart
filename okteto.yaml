@@ -17,8 +17,6 @@ dependencies:
 deploy:
   - name: Deploy Application
     command: |
-      echo hola=$HOLA_MUNDO_BRANCH
-      echo hello=$HELLO_WORLD_BRANCH
       helm upgrade --install hello-world ./hello-world \
         --set helloworld.image.repository=${OKTETO_REGISTRY_URL}/${OKTETO_NAMESPACE}/hello-world-nochart-hello-world \
         --set helloworld.image.tag=${HELLO_WORLD_IMAGE_TAG:-okteto}  \
