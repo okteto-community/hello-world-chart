@@ -10,7 +10,7 @@ dependencies:
 
   mychart:
     repository: https://github.com/okteto-community/hello-world-chart
-    branch: ${HOLA_MUNDO_BRANCH:-main}
+    branch: "jjc/parallel-test"
     manifest: okteto-template.yaml
     wait: true
     variables:
