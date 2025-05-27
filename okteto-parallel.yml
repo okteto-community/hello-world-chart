@@ -16,6 +16,16 @@ dependencies:
     variables:
       CHART_DIRECTORY: "mychart"
       APP_NAME: "mychart-name"
+  
+  anotherchart:
+    repository: https://github.com/okteto-community/hello-world-chart
+    branch: "jjc/parallel-test"
+    manifest: okteto-template.yml
+    # wait: true
+    variables:
+      CHART_DIRECTORY: "anotherchart"
+      APP_NAME: "anotherchart-name"
+      
 deploy:
   - name: Placeholder
     command: |
