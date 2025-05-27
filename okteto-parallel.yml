@@ -4,15 +4,15 @@ dependencies:
     repository: https://github.com/okteto-community/hello-world-chart
     branch: ${HELLO_WORLD_BRANCH:-main}
     manifest: okteto.yaml
-    wait: true
+    # wait: true
     variables:
       DEPLOY: "false"
 
   mychart:
     repository: https://github.com/okteto-community/hello-world-chart
     branch: "jjc/parallel-test"
-    manifest: okteto-template.yaml
-    wait: true
+    manifest: okteto-template.yml
+    # wait: true
     variables:
       CHART_DIRECTORY: "mychart"
       APP_NAME: "mychart-name"
