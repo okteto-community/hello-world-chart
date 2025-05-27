@@ -1,6 +1,21 @@
 # we add the repository as a dependency to have it build first
 dependencies:
+  hello-world-hola-mundo:
+    repository: https://github.com/okteto-community/hello-world-chart
+    branch: ${HELLO_WORLD_BRANCH:-main}
+    manifest: okteto.yaml
+    wait: true
+    variables:
+      DEPLOY: "false"
 
+  mychart:
+    repository: https://github.com/okteto-community/hello-world-chart
+    branch: ${HOLA_MUNDO_BRANCH:-main}
+    manifest: okteto-template.yaml
+    wait: true
+    variables:
+      CHART_DIRECTORY: "mychart"
+      APP_NAME: "mychart-name"
 deploy:
   - name: Placeholder
     command: |

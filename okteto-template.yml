@@ -1,0 +1,4 @@
+deploy:
+  - name: Deploy Application
+    command: |
+      helm upgrade --install ${APP_NAME} ./${CHART_DIRECTORY}

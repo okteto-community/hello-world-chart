@@ -23,6 +23,6 @@ deploy:
         --set holamundo.image.repository=${OKTETO_REGISTRY_URL}/${OKTETO_NAMESPACE}/hola-mundo-nochart-hola-mundo \
         --set holamundo.image.tag=${HOLA_MUNDO_IMAGE_TAG:-okteto}  \
         --values values-okteto.yaml
-  - name: Deploy Sample Application
-    command: |
-      helm upgrade --install mychart ./mychart
+  # - name: Deploy Sample Application
+  #   command: |
+  #     helm upgrade --install mychart ./mychart
