@@ -1,0 +1,7 @@
+# we add the repository as a dependency to have it build first
+dependencies:
+
+deploy:
+  - name: Placeholder
+    command: |
+      echo "This is a placeholder for the deploy step. You can add your deployment commands here."
