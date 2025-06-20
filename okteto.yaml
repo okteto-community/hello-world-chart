@@ -18,8 +18,8 @@ deploy:
   - name: Deploy Application
     command: |
       helm upgrade --install hello-world ./hello-world \
-        --set helloworld.image.repository=${OKTETO_REGISTRY_URL}/${OKTETO_NAMESPACE}/hello-world-nochart-hello-world \
-        --set helloworld.image.tag=${HELLO_WORLD_IMAGE_TAG:-okteto}  \
-        --set holamundo.image.repository=${OKTETO_REGISTRY_URL}/${OKTETO_NAMESPACE}/hola-mundo-nochart-hola-mundo \
-        --set holamundo.image.tag=${HOLA_MUNDO_IMAGE_TAG:-okteto}  \
+        --set helloworld.image.repository=${OKTETO_DEPENDENCY_HELLO_WORLD_NOCHART_BUILD_HELLO_WORLD_REGISTRY}/${OKTETO_DEPENDENCY_HELLO_WORLD_NOCHART_BUILD_HELLO_WORLD_REPOSITORY} \
+        --set helloworld.image.tag=${OKTETO_DEPENDENCY_HELLO_WORLD_NOCHART_BUILD_HELLO_WORLD_SHA}  \
+        --set holamundo.image.repository=${OKTETO_DEPENDENCY_HOLA_MUNDO_NOCHART_BUILD_HOLA_MUNDO_REGISTRY}/${OKTETO_DEPENDENCY_HOLA_MUNDO_NOCHART_BUILD_HOLA_MUNDO_REPOSITORY} \
+        --set holamundo.image.tag=${OKTETO_DEPENDENCY_HOLA_MUNDO_NOCHART_BUILD_HOLA_MUNDO_SHA}  \
         --values values-okteto.yaml
